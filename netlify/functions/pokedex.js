@@ -86,7 +86,9 @@ const PokemonTypeColors = {
   };
 
 exports.handler = async function() {
-    
+   
+
+    const PokeData = 
 
     const PokeApiData = await fetch('https://pokeapi.co/api/v2/pokedex/2/').then(response => response.json()
     )
@@ -94,15 +96,12 @@ exports.handler = async function() {
     const pokeData = PokeApiData.pokemon_entries 
         ? PokeApiData.pokemon_entries.map(pokemon => {
         
-            const pokemonName = 
-                pokemon.pokemon_species.name[0].toUpperCase() + 
-                pokemon.pokemon_species.name.substring(1)
             
             const pokeImg = "https://raw.githubusercontent.com/HybridShivam/Pokemon/master/assets/images/" + zerofill(pokemon.entry_number)  + ".png"
 
             return {
                 id: pokemon.entry_number,
-                name : pokemonName,
+                name : pokemon.pokemon_species.name,
                 img : pokeImg
             }
         })
