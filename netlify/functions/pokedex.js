@@ -86,9 +86,26 @@ const PokemonTypeColors = {
   };
 
 exports.handler = async function() {
-   
+    /*
+    for (let i= 1; i<= 898; i++){
+        const pokemonApiData = await fetch("https://pokeapi.co/api/v2/ability/" + i +"/").then(response => 
+        response => {
+
+            let type = PokemonTypeColors[response.data.types[0].type.name]
+
+            let poke = {
+                name: response.data.name,
+                id: response.data.id,
+                img: "https://raw.githubusercontent.com/HybridShivam/Pokemon/master/assets/images/" + zerofill(response.data.id)  + ".png",
+                color: type,
+                types: 
+            }
+
+        }).json()
+    }
 
     const PokeData = 
+    */
 
     const PokeApiData = await fetch('https://pokeapi.co/api/v2/pokedex/2/').then(response => response.json()
     )
