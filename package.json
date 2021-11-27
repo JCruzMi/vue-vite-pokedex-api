@@ -7,19 +7,11 @@
     "serve": "vite preview"
   },
   "dependencies": {
-<<<<<<< HEAD
     "@tailwindcss/postcss7-compat": "^2.2.17",
     "autoprefixer": "^9.8.8",
     "node-fetch": "^2.6.6",
     "postcss": "^7.0.39",
     "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.2.17",
-=======
-    "@fullhuman/postcss-purgecss": "^4.0.3",
-    "cssnano": "^5.0.11",
-    "node-fetch": "^2.6.6",
-    "tailwind": "^4.0.0",
-    "tailwindcss": "^2.2.19",
->>>>>>> 8ed44ca07c3345aad62762dab9530ae9554ffc5d
     "vue": "^3.2.16"
   },
   "devDependencies": {
