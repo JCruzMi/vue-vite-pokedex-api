@@ -1,5 +1,6 @@
 <template>
     <div>
+        <router-link :to="{ name: 'pokemon', params: { id: number }}">
         <div>
             <div style="opacity: 1; transform: translate3d(0px, 0px, 0px)">
                 <div>
@@ -70,42 +71,47 @@
                                 />
                             </div>
                         </div>
-                        <div class="bg-white w-full pt-5 pb-8 text-center">
+                        <div class="bg-white w-full pt-5 pb-5 text-center">
                             
                             <h1 class="capitalize font-semibold text-3xl mb-2 text-black">
                                 {{name}}
                             </h1>
+                            <!---
                             <div class="flex flex-wrap mx-auto justify-center">
                                 <p class="font-bold uppercase text-sm mr-6" style="color: rgb(160, 64, 160);">poison</p>
                                 <p class="font-bold uppercase text-sm" style="color: rgb(224, 192, 104);">ground</p>
                             </div>
+                            --->
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+        </router-link>
     </div> 
 </template>
 
 <script setup="props">
-import { computed, defineProps } from "vue";
+    import { computed, defineProps } from "vue";
 
-const props = defineProps({
-  name: {
-    type: String,
-    required: true,
-  },
-  number: {
-    type: Number,
-    required: true,
-  },
-  img : {
-      type: String,
-      required: true,
-  }
-});
+    const props = defineProps({
+    name: {
+        type: String,
+        required: true,
+    },
+    number: {
+        type: Number,
+        required: true,
+    },
+    img : {
+        type: String,
+        required: true,
+    }
+    });
 
 
 </script>
 
-<style></style>
+<style>
+
+</style>

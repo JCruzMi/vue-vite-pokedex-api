@@ -85,26 +85,47 @@ const PokemonTypeColors = {
     },
   };
 
-exports.handler = async function() {
+exports.handler = async event => {
 
-    const PokeApiData = await fetch('https://pokeapi.co/api/v2/pokedex/2/').then(response => response.json())
+    const pokemonID = JSON.parse(event.body)
+    
+    const pokemon = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokemonID.id}`)
 
-    const pokeData = PokeApiData.pokemon_entries 
-        ? PokeApiData.pokemon_entries.map(pokemon => {      
-            
-            const pokeImg = "https://raw.githubusercontent.com/HybridShivam/Pokemon/master/assets/images/" + zerofill(pokemon.entry_number)  + ".png"
+    let pokemonData = await pokemon.json()
 
-            return {
-                id: pokemon.entry_number,
-                name : pokemon.pokemon_species.name,
-                img : pokeImg,
-            }
-        })
-    :[]
+    let color = PokemonTypeColors[pokemonData.types[0].type.name]
+
+    let types= []
+
+    for (type in pokemonData.types){
+      types.push({
+        key: pokemonData.types[type].type.name,
+        value: PokemonTypeColors[pokemonData.types[type].type.name]
+      })
+    }
+
+    let stats = []
+
+    for ((index) in pokemonData.stats){
+      stats.push({
+        key: pokemonData.stats[index]["stat"].name,
+        value : pokemonData.stats[index].base_stat
+      })
+    }
+
+    let pokemonApiData = {
+        name: pokemonData.name,
+        id: pokemonData.id,
+        img: "https://raw.githubusercontent.com/HybridShivam/Pokemon/master/assets/images/" + zerofill(pokemonData.id)  + ".png",
+        color: color,
+        types: types,
+        stats: stats
+    }
+    
 
     return {
       statusCode: 200,
-      body: JSON.stringify(pokeData)
+      body: JSON.stringify(pokemonApiData)
   }
 }
 
