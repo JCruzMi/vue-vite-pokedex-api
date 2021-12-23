@@ -31,7 +31,7 @@
                             justify-center
                             relative
                             "
-                            style="background-color: rgb(248, 88, 136)"
+                            :style="{backgroundColor: medium}"
                         >
                             <p
                             class="
@@ -58,8 +58,8 @@
                                     z-index: -10;
                                     bottom: 8px;
                                     left: 16px;
-                                    background-color: rgb(244, 125, 161);
                                     "
+                                    :style="{backgroundColor: light}"
                                 ></div>
                                 <img
                                     :src="img"
@@ -71,17 +71,16 @@
                                 />
                             </div>
                         </div>
-                        <div class="bg-white w-full pt-5 pb-5 text-center">
+                        <div class="bg-white w-auto pt-5 pb-5 text-center">
                             
                             <h1 class="capitalize font-semibold text-3xl mb-2 text-black">
                                 {{name}}
                             </h1>
-                            <!---
-                            <div class="flex flex-wrap mx-auto justify-center">
-                                <p class="font-bold uppercase text-sm mr-6" style="color: rgb(160, 64, 160);">poison</p>
-                                <p class="font-bold uppercase text-sm" style="color: rgb(224, 192, 104);">ground</p>
+
+                            <div class="flex justify-center">
+                                <span class="flex font-bold uppercase text-sm mr-3 text-center pl-3" 
+                                    v-for="type in types" :key="type" :style="{color: type.value.light}">{{type.key}}</span>
                             </div>
-                            --->
                         </div>
                     </div>
                 </div>
@@ -105,6 +104,18 @@
     },
     img : {
         type: String,
+        required: true,
+    },
+    medium : {
+        type: String,
+        required: true,
+    },
+    light : {
+        type: String,
+        required: true,
+    },
+    types : {
+        type: Array,
         required: true,
     }
     });

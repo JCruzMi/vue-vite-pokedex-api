@@ -1,5 +1,14 @@
 <template>
-  <router-view />
+  <suspense>
+      <template #default>
+        <router-view />
+      </template>
+      <template #fallback>
+        <div>
+          <span class="text-primary font-semibold">Cargando informacion...</span>
+        </div>
+      </template>
+    </suspense>
 </template>
 
 <script setup>

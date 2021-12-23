@@ -1,14 +1,13 @@
 <template>
-    <Suspense>
-        <template #default>
-            <div class="px-2 md:px-24 lg:px-64 pt-1">
-                <div class="pb-1">
+
+            <div class="px-2 md:px-24 lg:px-64 pt-0 pb-2">
+                <div class="pb-1 text-left">
                     <button class="text-primary font-semibold transform hover:-translate-y-1 transition-transform ease-in duration-150 focus:outline-none">
-                        <span class="text-primary font-semibold"  @click="$router.go(-1)">Go Back</span>
+                        <span class="text-primary font-semibold" @click="$router.go(-1)">Go Back</span>
                     </button>
                 <div class="flex flex-col lg:flex-row justify-center items-start w-full mx-auto my-4 rounded-lg shadow-lg" :style="{backgroundColor: pokemon.list.color.medium}">
                     <div class="w-full">
-                        <div class="px-4 md:px-8 pt-5">
+                        <div class="px-4 md:px-5 pt-5">
                             <h6 class="text-2xl text-white pb-0 text-left"># {{pokemon.list.id}}</h6>
                             <h1 class="text-2xl md:text-3xl lg:text-4xl text-white font-bold pb-0 capitalize text-left">{{pokemon.list.name}}</h1>
                         </div>
@@ -22,7 +21,7 @@
                     </div>
                 </div>
                 <div class="flex flex-col lg:flex-row pb-5 gap-5">
-                    <span class="flex flex-col mx-auto w-full text-center py-4 rounded-full font-bold text-lg"
+                    <span class="flex flex-col mx-auto w-full text-center py-4 rounded-lg font-bold text-lg shadow-lg"
                         v-for="type in pokemon.list.types" :key="type"
                         :style="{backgroundColor: type.value.light}">
                         {{type["key"]}}
@@ -32,16 +31,10 @@
                     <div class="flex flex-col mx-auto w-full text-center" 
                         v-for="stat in pokemon.list.stats" :key="stat">
                         <span class="text-primary font-semibold">{{stat.key}}</span>
-                        <span class="text-primary font-semibold">{{stat.value}}</span>
+                        <span class="text-primary pt-3">{{stat.value}}</span>
                     </div>
                 </div>
             </div>
-        </template>
-
-        <template #fallback>
-            <span class="text-3xl">Cargando informacion...</span>
-        </template>
-     </Suspense>
   
 
 </template>
