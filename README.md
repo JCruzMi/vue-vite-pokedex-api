@@ -1,7 +1,7 @@
 <div align="center">
-  # Vue Pokédex
-  # A simple pokédex made with Vue3, PokéAPI & Serverless
-  ### [demo](https://vue3-pokeapi-serverless.netlify.app)
+  <h1>Vue Pokédex</h1>
+  <h2> A simple pokédex made with Vue3, PokéAPI & Serverless </h2>
+  <a src="https://vue3-pokeapi-serverless.netlify.app" target="_blank">demo</a>
 </div>
 
 ![]()
@@ -10,10 +10,10 @@
 </p>
 
 # Built With
->>> PokeApi
-Vue3 Js
-Tailwind CSS
-netlify functions
+> PokeApi
+>Vue3 Js
+>Tailwind CSS
+>netlify functions
 
 # Getting Started
 
