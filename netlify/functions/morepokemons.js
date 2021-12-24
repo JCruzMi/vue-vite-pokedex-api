@@ -87,13 +87,9 @@ const PokemonTypeColors = {
 
 exports.handler = async event => {
 
-    let pokemons = []
-
     const pokemonID = JSON.parse(event.body)
     
     const pokemonData = await axios(`https://pokeapi.co/api/v2/pokemon/${pokemonID.id}`)
-
-    console.log(pokemonData.data.name)
 
     let color = PokemonTypeColors[pokemonData.data.types[0].type.name]
 
@@ -106,13 +102,21 @@ exports.handler = async event => {
       })
     }
 
-    pokemons.push({
+    let img=""
+    if (pokemonID.id >= 808){
+      img= pokemonData.data.sprites.other["official-artwork"].front_default
+    } else {
+      img = "https://raw.githubusercontent.com/HybridShivam/Pokemon/master/assets/images/" + zerofill(pokemonData.data.id)  + ".png"
+    }
+
+
+    let pokemons = {
         name: pokemonData.data.name,
         id: pokemonData.data.id,
-        img: "https://raw.githubusercontent.com/HybridShivam/Pokemon/master/assets/images/" + zerofill(pokemonData.data.id)  + ".png",
+        img: img,
         color: color,
         types: types
-    })
+    }
     
     return {
       statusCode: 200,

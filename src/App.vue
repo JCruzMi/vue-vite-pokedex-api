@@ -22,6 +22,8 @@
 </script>
 
 <style>
+::-webkit-scrollbar {display: none;}
+
 body {
   background-color: #242424;
 }
