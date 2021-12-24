@@ -1,7 +1,22 @@
-# Vue 3 + Vite
+<div align="center">
+  my text here.
+</div>
+# Vue Pokédex
+# A simple pokédex made with Vue3, PokéAPI & Serverless
 
-This template should help get you started developing with Vue 3 in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+### [demo](https://vue3-pokeapi-serverless.netlify.app)
 
-## Recommended IDE Setup
+![]()
+<p align="center">
+  <img width="768" height="399"src="https://media.discordapp.net/attachments/809903524463902752/923986922626486372/unknown.png?width=768&height=399">
+</p>
 
-- [VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=johnsoncodehk.volar)
+## Project setup
+```
+npm install
+```
+
+### Compiles and hot-reloads for development
+```
+npm run serve
+```
