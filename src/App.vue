@@ -13,6 +13,12 @@
 
 <script setup>
 
+  import {provide , ref} from "vue";
+
+  const list = ref([])
+
+  provide("list", list);
+
 </script>
 
 <style>

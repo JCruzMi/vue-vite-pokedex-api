@@ -86,7 +86,7 @@
               </div>          
             </div>
           </div>
-            <div class="mx-auto w-full text-center">
+            <div class="mx-auto w-full text-center pb-5">
               <div
                 class="
                   w-full
@@ -118,14 +118,16 @@
 </template>
 
 <script setup>
-import { watchEffect, computed, reactive, ref } from "vue";
+import { watchEffect, computed, reactive, ref, inject } from "vue";
 
 import PokemonCard from "../components/PokemonCard.vue";
 
 const filterText = ref("");
 
+const list = inject("list")
+
 const pokeStore = reactive({
-  list: [],
+  list: list,
   filteredList: computed(() =>
     pokeStore.list.filter((pokemon) => pokemon.name.includes(filterText.value))
   ),
@@ -133,16 +135,17 @@ const pokeStore = reactive({
 
 watchEffect(async () => {
   //898
-  for (let i = 1; i<= 151; i++){
-    let pokeData = await fetch("/.netlify/functions/pokemon/",{
-        method: 'POST',
-        body: JSON.stringify({id: i}),
-    }).then((response) =>
-        response.json()
-    );
-    pokeStore.list.push(pokeData);
+  if (pokeStore.list.length <= 0){
+    for (let i = 1; i<= 151; i++){
+      let pokeData = await fetch("/.netlify/functions/pokemon/",{
+          method: 'POST',
+          body: JSON.stringify({id: i}),
+      }).then((response) =>
+          response.json()
+      );
+      pokeStore.list.push(pokeData);
+    }
   }
-
 });
 </script>
 

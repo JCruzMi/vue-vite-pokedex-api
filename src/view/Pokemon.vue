@@ -12,7 +12,7 @@
                             <h1 class="text-2xl md:text-3xl lg:text-4xl text-white font-bold pb-0 capitalize text-left">{{pokemon.list.name}}</h1>
                         </div>
                         <div class="relative text-center mx-auto w-full h-96 mt-8 lg:mt-24">
-                            <div class="rounded-full absolute inset-x-auto mx-auto z-0 inline-block left-0 right-0" style="width: 350px; height: 350px; bottom: 55px;" :style="{backgroundColor: pokemon.list.color.light}"></div>
+                            <div class="rounded-full absolute inset-x-auto mx-auto z-0 inline-block left-0 right-0" style="width: 340px; height: 340px; bottom: 55px;" :style="{backgroundColor: pokemon.list.color.light}"></div>
                                 <div style="width: 325px; height: 325px; display: block; left: 0px; right: 0px; bottom: 50px; margin: auto; position: absolute;">
                                     <img :src="pokemon.list.img" :alt="pokemon.list.name" style="filter: blur(0px); transition: filter 500ms ease 0s;">
                                 </div>
@@ -40,7 +40,7 @@
 </template>
 
 <script setup>
-    import { onMounted, computed, reactive, watchEffect } from "vue";
+    import { reactive, watchEffect } from "vue";
 
     
     import { useRoute } from 'vue-router'
@@ -52,6 +52,7 @@
     });
 
     watchEffect(async () => {
+
         const poke = await fetch("/.netlify/functions/pokemon/",{
             method: 'POST',
             body: JSON.stringify({id: route.params.id}),
@@ -60,6 +61,7 @@
         );
 
         pokemon.list = poke;
+        
     });
 
 
