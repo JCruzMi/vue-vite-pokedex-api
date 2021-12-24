@@ -27,15 +27,27 @@
 > npm
 ```
 npm install npm@latest -g
+
+npm install netlify-cli -g
 ```
 
 ## Project setup
 
 ```
 npm install
+
 ```
 
 # Compiles and hot-reloads for development
 ```
+netlify login
+
+netlify init
+
 ntl dev
 ```
+
+# references
+
+https://pokedex.stevenhansel.com
+https://github.com/ShinteiMai/react-pokedex
