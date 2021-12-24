@@ -136,7 +136,7 @@ const pokeStore = reactive({
 watchEffect(async () => {
   //898
   if (pokeStore.list.length <= 0){
-    for (let i = 1; i<= 151; i++){
+    for (let i = 1; i<= 898; i++){
       let pokeData = await fetch("/.netlify/functions/pokemon/",{
           method: 'POST',
           body: JSON.stringify({id: i}),
