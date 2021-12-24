@@ -16,11 +16,11 @@
 
 >Tailwind CSS
 
->netlify functions
+>Netlify Functions
 
 # Getting Started
 
-> make a copy.
+> Make a copy of the project
 
 # Prerequisites
 
@@ -34,8 +34,7 @@ npm install netlify-cli -g
 ## Project setup
 
 ```
-npm install
-
+npm instal
 ```
 
 # Compiles and hot-reloads for development
@@ -50,4 +49,5 @@ ntl dev
 # references
 
 https://pokedex.stevenhansel.com
+
 https://github.com/ShinteiMai/react-pokedex
