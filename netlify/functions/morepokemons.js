@@ -1,4 +1,4 @@
-const fetch = require('node-fetch').default
+const axios = require('axios').default
 
 function zerofill(number){
     var num = number.toString()
@@ -85,45 +85,35 @@ const PokemonTypeColors = {
     },
   };
 
-exports.handler = async function() {
+exports.handler = async event => {
 
     let pokemons = []
 
-    for (let i = 1; i<= 20; i++){
-        
-        const pokemon = await fetch(`https://pokeapi.co/api/v2/pokemon/`+i)
-        let pokemonData = await pokemon.json()
+    const pokemonID = JSON.parse(event.body)
     
-        let color = PokemonTypeColors[pokemonData.types[0].type.name]
-    
-        let types= []
-    
-        for (type in pokemonData.types){
-          types.push({
-            key: pokemonData.types[type].type.name,
-            value: PokemonTypeColors[pokemonData.types[type].type.name]
-          })
-        }
-    
-        let stats = []
-    
-        for ((index) in pokemonData.stats){
-          stats.push({
-            key: pokemonData.stats[index]["stat"].name,
-            value : pokemonData.stats[index].base_stat
-          })
-        }
-    
-        pokemons.push({
-            name: pokemonData.name,
-            id: pokemonData.id,
-            img: "https://raw.githubusercontent.com/HybridShivam/Pokemon/master/assets/images/" + zerofill(pokemonData.id)  + ".png",
-            color: color,
-            types: types,
-            stats: stats
-        })
-    }    
+    const pokemonData = await axios(`https://pokeapi.co/api/v2/pokemon/${pokemonID.id}`)
 
+    console.log(pokemonData.data.name)
+
+    let color = PokemonTypeColors[pokemonData.data.types[0].type.name]
+
+    let types= []
+
+    for (type in pokemonData.data.types){
+      types.push({
+        key: pokemonData.data.types[type].type.name,
+        value: PokemonTypeColors[pokemonData.data.types[type].type.name]
+      })
+    }
+
+    pokemons.push({
+        name: pokemonData.data.name,
+        id: pokemonData.data.id,
+        img: "https://raw.githubusercontent.com/HybridShivam/Pokemon/master/assets/images/" + zerofill(pokemonData.data.id)  + ".png",
+        color: color,
+        types: types
+    })
+    
     return {
       statusCode: 200,
       body: JSON.stringify(pokemons)

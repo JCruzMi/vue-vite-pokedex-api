@@ -118,8 +118,7 @@
 </template>
 
 <script setup>
-import { onMounted, computed, reactive, ref } from "vue";
-import axios from 'axios'
+import { watchEffect, computed, reactive, ref } from "vue";
 
 import PokemonCard from "../components/PokemonCard.vue";
 
@@ -132,10 +131,17 @@ const pokeStore = reactive({
   ),
 });
 
-onMounted(async () => {
-  const pokeData = await axios.get("/.netlify/functions/morepokemons")
-
-  pokeStore.list = pokeData.data;
+watchEffect(async () => {
+  //898
+  for (let i = 1; i<= 151; i++){
+    let pokeData = await fetch("/.netlify/functions/pokemon/",{
+        method: 'POST',
+        body: JSON.stringify({id: i}),
+    }).then((response) =>
+        response.json()
+    );
+    pokeStore.list.push(pokeData);
+  }
 
 });
 </script>

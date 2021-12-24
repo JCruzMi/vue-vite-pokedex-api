@@ -57,7 +57,7 @@
             body: JSON.stringify({id: route.params.id}),
         }).then((response) =>
             response.json()
-    );
+        );
 
         pokemon.list = poke;
     });
